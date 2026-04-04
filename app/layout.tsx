@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#0A0A0F" />
+        <meta name="theme-color" content="#050508" />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <BackgroundAnimation />
