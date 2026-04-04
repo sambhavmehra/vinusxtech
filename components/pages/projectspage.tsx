@@ -96,7 +96,7 @@ export default function ProjectsPage() {
               Have a <span className="text-gradient">Project</span> in Mind?
             </h2>
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can turn your vision into reality with our expertise in development and security.
+              Let&apos;s discuss how we can turn your vision into reality with our expertise in development and security.
             </p>
             <motion.a
               href="/contact"

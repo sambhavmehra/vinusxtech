@@ -75,7 +75,7 @@ export default function ContactPage() {
               Get in <span className="text-gradient">Touch</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Ready to transform your business with secure, innovative solutions? Let's start the conversation.
+              Ready to transform your business with secure, innovative solutions? Let&apos;s start the conversation.
             </p>
           </motion.div>
 
@@ -166,7 +166,7 @@ export default function ContactPage() {
                   >
                     <CheckCircle className="w-16 h-16 text-[#00ff88] mx-auto mb-4" />
                     <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                    <p className="text-gray-400">We'll get back to you within 24 hours.</p>
+                    <p className="text-gray-400">We&apos;ll get back to you within 24 hours.</p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">

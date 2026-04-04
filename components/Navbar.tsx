@@ -38,19 +38,19 @@ export default function Navbar() {
         scrolled ? 'glass-dark py-4' : 'py-6'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src="/logo.png"
-              alt="VinUSXtech Logo"
-              width={48}
-              height={48}
-              className="object-contain"
-              priority
-            />
-          </Link>
-
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <Link href="/" className={`absolute z-[60] transition-all duration-300 ${scrolled ? 'top-[-10px] left-4' : 'top-[-10px] left-4'}`}>
+          <Image
+            src="/logo.png"
+            alt="VinUSXtech Logo"
+            width={150}
+            height={130}
+            className={`object-contain transition-transform duration-300 drop-shadow-2xl ${scrolled ? 'scale-75 origin-top-left' : 'scale-100 origin-top-left'}`}
+            priority
+          />
+        </Link>
+        
+        <div className="flex items-center justify-end min-h-[40px]">
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
@@ -73,7 +73,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white focus:outline-none"
+            className="md:hidden text-white focus:outline-none z-50 relative"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

@@ -15,8 +15,8 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="VinUSXtech Logo"
-                width={56}
-                height={56}
+                width={105}
+                height={100}
                 className="object-contain"
               />
             </div>

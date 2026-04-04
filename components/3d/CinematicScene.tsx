@@ -146,7 +146,7 @@ function ShieldStructure({ weightRef }: { weightRef: React.MutableRefObject<any>
 
     groupRef.current.rotation.y = Math.sin(time) * 0.5; 
     
-    const s = w > 0 ? 0.5 + w * 0.6 : 0.001;
+    const s = w > 0 ? 0.25 + w * 0.35 : 0.001;
     groupRef.current.scale.set(s, s, s);
     groupRef.current.visible = w > 0.01;
 
@@ -158,11 +158,11 @@ function ShieldStructure({ weightRef }: { weightRef: React.MutableRefObject<any>
   return (
     <group ref={groupRef}>
       <mesh rotation={[Math.PI, 0, 0]}>
-        <coneGeometry args={[1.5, 2.5, 3]} />
+        <octahedronGeometry args={[1.8, 0]} />
         <meshStandardMaterial ref={m1} color="#0A0A0F" emissive="#00ff88" transparent wireframe />
       </mesh>
-      <mesh rotation={[Math.PI, 0, 0]} position={[0, -0.2, 0]}>
-        <coneGeometry args={[1.8, 2.8, 3]} />
+      <mesh rotation={[Math.PI, 0, 0]}>
+        <octahedronGeometry args={[2.0, 0]} />
         <meshBasicMaterial ref={m2} color="#00d4ff" transparent wireframe blending={THREE.AdditiveBlending} />
       </mesh>
     </group>
@@ -179,7 +179,7 @@ function FinalLogo({ weightRef }: { weightRef: React.MutableRefObject<any> }) {
     if (!groupRef.current || !m1.current) return;
     const w = weightRef.current.logo;
 
-    const s = w > 0 ? 0.5 + w * 0.5 : 0.001;
+    const s = w > 0 ? 0.25 + w * 0.25 : 0.001;
     groupRef.current.scale.set(s, s, s);
     groupRef.current.visible = w > 0.01;
 
@@ -243,16 +243,21 @@ function DynamicMorphSequence({ progress }: { progress: React.MutableRefObject<n
     }
 
     // Pull object to the right during the middle sections to not block UI
-    if (p >= 0.15 && p < 0.85) {
-      targetPosX = THREE.MathUtils.lerp(0, 3.5, Math.min((p - 0.15) / 0.15, 1)); 
-      if (p > 0.7) {
-        // Return to center for Finale CTA
-        targetPosX = THREE.MathUtils.lerp(3.5, 0, (p - 0.7) / 0.15);
+    if (p >= 0.15) {
+      if (p < 0.80) {
+        // Keeps distance from 'Absolute Digital Defense' by staying at x=4.0
+        targetPosX = THREE.MathUtils.lerp(0, 4.0, Math.min((p - 0.15) / 0.15, 1)); 
+      } else {
+        // Rapidly return to center exactly for the static Finale CTA
+        targetPosX = THREE.MathUtils.lerp(4.0, 0, Math.min((p - 0.80) / 0.15, 1));
       }
     }
 
     globalGroupRef.current.position.lerp(new THREE.Vector3(targetPosX, targetPosY, 0), 0.05);
-    globalGroupRef.current.position.y += Math.sin(time) * 0.05; // Added subtle float
+    
+    // Stop the floating animation when it reaches the logo structure so it's perfectly fixed
+    const floatAmount = (1 - wLogo) * 0.05;
+    globalGroupRef.current.position.y += Math.sin(time) * floatAmount; 
   });
   
   return (
@@ -364,7 +369,6 @@ export default function CinematicScene({ scrollYProgress }: Props) {
 
   return (
     <Canvas dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
-      <color attach="background" args={['#05050A']} />
       <SceneController progress={progress} />
 
       <ambientLight intensity={0.5} />
@@ -372,11 +376,6 @@ export default function CinematicScene({ scrollYProgress }: Props) {
       <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#a855f7" />
 
       <DynamicMorphSequence progress={progress} />
-      <ParticleGrid progress={progress} />
-      <CyberGrid progress={progress} />
-
-      {/* Background ambient sparkles */}
-      <Sparkles count={200} scale={20} size={2} speed={0.4} color="#00d4ff" opacity={0.2} />
 
       <Environment preset="city" />
 

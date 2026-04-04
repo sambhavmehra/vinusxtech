@@ -84,13 +84,13 @@ export default function AboutPage() {
                   fields, recognized that modern businesses needed partners who could deliver both.
                 </p>
                 <p>
-                  Today, we've grown into a team of 150+ specialists serving clients worldwide. From startups
-                  to Fortune 500 companies, we've delivered over 500 projects spanning software development,
+                  Today, we&apos;ve grown into a team of 150+ specialists serving clients worldwide. From startups
+                  to Fortune 500 companies, we&apos;ve delivered over 500 projects spanning software development,
                   AI solutions, and comprehensive cybersecurity services.
                 </p>
                 <p>
                   Our unique approach combines cutting-edge development practices with enterprise-grade
-                  security from day one. We don't just build software—we build secure, scalable, and
+                  security from day one. We don&apos;t just build software—we build secure, scalable, and
                   future-proof solutions.
                 </p>
               </div>
