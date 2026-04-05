@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://vinusxtech.com/sitemap.xml',
+    sitemap: 'https://vinusxtech.me/sitemap.xml',
   };
 }

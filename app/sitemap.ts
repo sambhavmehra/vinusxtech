@@ -3,37 +3,37 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://vinusxtech.com',
+      url: 'https://vinusxtech.me',
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     {
-      url: 'https://vinusxtech.com/about',
+      url: 'https://vinusxtech.me/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://vinusxtech.com/services',
+      url: 'https://vinusxtech.me/services',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://vinusxtech.com/projects',
+      url: 'https://vinusxtech.me/projects',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: 'https://vinusxtech.com/security',
+      url: 'https://vinusxtech.me/security',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://vinusxtech.com/contact',
+      url: 'https://vinusxtech.me/contact',
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.5,
