@@ -1,6 +1,6 @@
 'use client';
 
-import { useScroll, motion, useTransform, useSpring, useMotionValueEvent, useInView } from 'framer-motion';
+import { useScroll, motion, useTransform, useSpring, useMotionValueEvent, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -126,38 +126,110 @@ function TechMarquee() {
 
 // ── Bento service card ────────────────────────────────────────────────────
 function BentoCard({ 
-  icon: Icon, title, desc, color, className = '', delay = 0 
+  icon: Icon, title, desc, color, className = '', delay = 0, features = []
 }: { 
-  icon: any; title: string; desc: string; color: string; className?: string; delay?: number 
+  icon: any; title: string; desc: string; color: string; className?: string; delay?: number; features?: string[]
 }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
-    <RevealSection delay={delay} className={className}>
-      <motion.div
-        whileHover={{ y: -4, scale: 1.01 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        className="glass-card rounded-2xl p-8 h-full cursor-default group relative overflow-hidden"
-      >
-        {/* Subtle corner glow on hover */}
-        <div 
-          className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-700 blur-[60px]"
-          style={{ background: color }}
-        />
-        
-        <div 
-          className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110"
-          style={{ background: `${color}15`, border: `1px solid ${color}25` }}
+    <>
+      <RevealSection delay={delay} className={`${className} h-full relative`}>
+        <motion.div
+          layoutId={`bento-${title.replace(/\s+/g, '-')}`}
+          onClick={() => setIsExpanded(true)}
+          whileHover={{ y: -4, scale: 1.01 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+          className={`glass-card rounded-2xl p-8 h-full group relative overflow-hidden cursor-pointer flex flex-col ${isExpanded ? 'opacity-0 pointer-events-none' : ''}`}
         >
-          <Icon className="w-6 h-6" style={{ color }} />
-        </div>
-        
-        <h4 className="text-xl font-bold mb-3 text-white group-hover:text-gradient transition-all duration-300">{title}</h4>
-        <p className="text-gray-500 font-light leading-relaxed text-sm">{desc}</p>
-        
-        <div className="mt-6 flex items-center gap-2 text-xs font-medium uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500" style={{ color }}>
-          Explore <ArrowUpRight className="w-3 h-3" />
-        </div>
-      </motion.div>
-    </RevealSection>
+          {/* Subtle corner glow on hover */}
+          <div 
+            className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-700 blur-[60px]"
+            style={{ background: color }}
+          />
+          
+          <div className="flex justify-between items-start mb-6">
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
+              style={{ background: `${color}15`, border: `1px solid ${color}25` }}
+            >
+              <Icon className="w-6 h-6" style={{ color }} />
+            </div>
+            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest transition-all duration-300 opacity-50 group-hover:opacity-100" style={{ color }}>
+              Explore <ArrowUpRight className="w-3 h-3" />
+            </div>
+          </div>
+          
+          <h4 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300" style={{ backgroundImage: `linear-gradient(135deg, white, ${color})` }}>{title}</h4>
+          <p className="text-gray-500 font-light leading-relaxed text-sm line-clamp-3">{desc}</p>
+        </motion.div>
+      </RevealSection>
+
+      <AnimatePresence>
+        {isExpanded && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pointer-events-auto">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsExpanded(false)}
+              className="absolute inset-0 bg-[#050508]/80 backdrop-blur-md cursor-pointer"
+            />
+            
+            {/* Modal Card */}
+            <motion.div
+              layoutId={`bento-${title.replace(/\s+/g, '-')}`}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              className="glass-card w-full max-w-3xl rounded-[2.5rem] p-8 md:p-12 relative z-10 flex flex-col shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+              style={{ borderColor: `${color}40`, boxShadow: `0 0 80px ${color}20` }}
+            >
+              {/* Modal Glow */}
+              <div 
+                className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-20 blur-[80px] pointer-events-none"
+                style={{ background: color }}
+              />
+              
+              <div className="flex justify-between items-start mb-8 relative z-10 flex-wrap gap-4">
+                <div className="flex items-center gap-4 sm:gap-6">
+                  <div 
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${color}15`, border: `1px solid ${color}30` }}
+                  >
+                    <Icon className="w-6 h-6 sm:w-8 sm:h-8" style={{ color }} />
+                  </div>
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, white, ${color})` }}>{title}</h4>
+                </div>
+                
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setIsExpanded(false); }}
+                  className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 transition-colors flex-shrink-0 ml-auto"
+                >
+                  <ChevronDown className="w-5 h-5 text-gray-400" />
+                </button>
+              </div>
+              
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8 relative z-10">{desc}</p>
+              
+              {features.length > 0 && (
+                <div className="border-t border-white/10 pt-8 relative z-10">
+                  <h5 className="text-xs uppercase tracking-[0.25em] font-mono text-gray-500 mb-6">Core Capabilities</h5>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-3 bg-white/[0.02] border border-white/5 rounded-xl p-4">
+                        <div className="w-2 h-2 rounded-full flex-shrink-0 shadow-[0_0_10px_currentColor]" style={{ background: color, color: color }} />
+                        <span className="text-gray-300 font-medium text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -390,8 +462,15 @@ export default function HomePage() {
                   icon={Brain}
                   title="AI Systems & Intelligence"
                   desc="Predictive models, intelligent agents, and neural architectures that learn, adapt, and evolve. From NLP pipelines to computer vision — we build AI that thinks."
-                  color="#00d4ff"
+                  color="#00d4ffff"
                   delay={0.1}
+                  features={[
+                    'Custom Neural Architecture Design',
+                    'Predictive Analytics & Forecasting',
+                    'Real-time Machine Vision',
+                    'Autonomous Agent Development',
+                    'Deep Semantic Intelligence & RAG'
+                  ]}
                 />
               </div>
               
@@ -401,6 +480,12 @@ export default function HomePage() {
                 desc="24/7 Security Operations Center with real-time threat detection and automated response."
                 color="#a855f7"
                 delay={0.2}
+                features={[
+                  'Real-time Heuristic Monitoring',
+                  'Automated Incident Response',
+                  'AI-Driven Anomaly Alerts',
+                  'Dark Web Threat Intelligence'
+                ]}
               />
 
               <BentoCard
@@ -409,6 +494,12 @@ export default function HomePage() {
                 desc="Vulnerability assessment and penetration testing with zero-day defense strategies."
                 color="#ff4d8f"
                 delay={0.15}
+                features={[
+                  'Network Penetration Testing',
+                  'API Security Audits',
+                  'Zero-Day Threat Modeling',
+                  'Advanced Social Engineering'
+                ]}
               />
 
               {/* Large card spanning 2 cols */}
@@ -419,6 +510,13 @@ export default function HomePage() {
                   desc="High-performance, scalable web and mobile applications built with modern frameworks. From microservices to serverless — architecture designed for the future."
                   color="#00ff88"
                   delay={0.25}
+                  features={[
+                    'Next.js React Ecosystems',
+                    'High-Load Microservice Backends',
+                    'Interactive WebGL Interfaces',
+                    'Event-Driven Architectures',
+                    'Enterprise System Development'
+                  ]}
                 />
               </div>
 
@@ -428,6 +526,12 @@ export default function HomePage() {
                 desc="Smart workflows and process orchestration that eliminate inefficiency at scale."
                 color="#ff00ff"
                 delay={0.2}
+                features={[
+                  'Robotic Process Automation (RPA)',
+                  'API Ecosystem Orchestration',
+                  'Self-Healing Infrastructure',
+                  'CI/CD Pipeline Generation'
+                ]}
               />
 
               <BentoCard
@@ -436,6 +540,12 @@ export default function HomePage() {
                 desc="CI/CD pipelines, container orchestration, and cloud-native infrastructure."
                 color="#ffb347"
                 delay={0.25}
+                features={[
+                  'Container Orchestration (K8s)',
+                  'Infrastructure as Code (IaC)',
+                  'Multi-Region High Availability',
+                  'Zero-Downtime Deployments'
+                ]}
               />
 
               <BentoCard
@@ -444,6 +554,12 @@ export default function HomePage() {
                 desc="End-to-end modernization strategies for enterprise systems and legacy platforms."
                 color="#00d4ff"
                 delay={0.3}
+                features={[
+                  'Monolith to Microservices',
+                  'Legacy Database Migrations',
+                  'Digital Strategy Consulting',
+                  'Enterprise Cloud Adoption'
+                ]}
               />
             </div>
           </div>

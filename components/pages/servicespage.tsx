@@ -60,13 +60,13 @@ export default function ServicesPage() {
     target: containerRef,
     offset: ["start start", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.2]);
 
   return (
     <div ref={containerRef} className="relative min-h-screen overflow-hidden text-white pt-24 bg-[#050508]">
-      
+
       {/* Background Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[5%] left-[10%] w-[30%] h-[30%] rounded-full bg-[#00d4ff]/10 blur-[150px]" />
@@ -75,7 +75,7 @@ export default function ServicesPage() {
       </div>
 
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        
+
         {/* HERO SECTION */}
         <section className="relative pt-20 pb-20 min-h-[50vh] flex flex-col justify-center items-center text-center">
           <motion.div style={{ y, opacity }} className="max-w-5xl mx-auto flex flex-col items-center">
@@ -95,7 +95,7 @@ export default function ServicesPage() {
                 Ecosystems.
               </span>
             </h1>
-            
+
             <p className="text-lg md:text-2xl text-gray-400 max-w-3xl leading-relaxed font-light">
               We engineer, secure, and scale high-performance architectures. From sovereign cloud infrastructure to offensive cybersecurity operations.
             </p>
@@ -125,11 +125,11 @@ export default function ServicesPage() {
                   className="glass-card rounded-3xl p-8 h-full relative overflow-hidden group border border-white/5"
                 >
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#00d4ff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  
+
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-white/5 border border-white/10 group-hover:border-[#00d4ff]/50 transition-colors duration-500">
                     <service.icon className="w-6 h-6 text-[#00d4ff]" />
                   </div>
-                  
+
                   <h4 className="text-xl font-bold mb-3 group-hover:text-white text-gray-200 transition-colors">{service.title}</h4>
                   <p className="text-gray-500 text-sm leading-relaxed">{service.desc}</p>
                 </motion.div>
@@ -141,7 +141,7 @@ export default function ServicesPage() {
         {/* SECTION: AI SOLUTIONS */}
         <section className="py-24 max-w-7xl mx-auto relative">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#a855f7]/5 blur-[120px] rounded-full pointer-events-none" />
-          
+
           <RevealSection className="mb-16">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-12 h-[1px] bg-gradient-to-r from-[#a855f7] to-transparent" />
@@ -163,7 +163,7 @@ export default function ServicesPage() {
                   className="glass-card rounded-[2rem] p-10 h-full relative overflow-hidden group border border-[#a855f7]/20"
                 >
                   <div className="absolute top-[-50%] right-[-10%] w-64 h-64 bg-[#a855f7]/20 rounded-full blur-[80px] group-hover:bg-[#a855f7]/40 transition-colors duration-700 pointer-events-none" />
-                  
+
                   <div className="flex flex-col md:flex-row gap-8 items-start relative z-10">
                     <div className="w-20 h-20 shrink-0 rounded-3xl flex items-center justify-center bg-[#a855f7]/10 border border-[#a855f7]/30 group-hover:scale-110 transition-transform duration-500">
                       <service.icon className="w-10 h-10 text-[#a855f7]" />
@@ -200,7 +200,7 @@ export default function ServicesPage() {
               <div className="glass-card rounded-[2.5rem] p-10 md:p-12 relative overflow-hidden group h-full border-t border-[#00ff88]/30">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00ff88]/5 to-transparent pointer-events-none" />
                 <div className="absolute -top-32 -left-32 w-64 h-64 bg-[#00ff88]/10 blur-[100px] pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity duration-1000" />
-                
+
                 <div className="relative z-10">
                   <div className="flex items-center gap-6 mb-10">
                     <div className="w-16 h-16 rounded-2xl bg-[#00ff88]/10 border border-[#00ff88]/30 flex items-center justify-center">
@@ -211,7 +211,7 @@ export default function ServicesPage() {
                       <p className="text-gray-400 text-sm mt-1">Vulnerability Assessment & Pen-Testing</p>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     {vaptFeatures.map((feature, index) => (
                       <motion.div
@@ -236,7 +236,7 @@ export default function ServicesPage() {
               <div className="glass-card rounded-[2.5rem] p-10 md:p-12 relative overflow-hidden group h-full border-t border-[#00d4ff]/30">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00d4ff]/5 to-transparent pointer-events-none" />
                 <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#00d4ff]/10 blur-[100px] pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity duration-1000" />
-                
+
                 <div className="relative z-10">
                   <div className="flex items-center gap-6 mb-10">
                     <div className="w-16 h-16 rounded-2xl bg-[#00d4ff]/10 border border-[#00d4ff]/30 flex items-center justify-center">
@@ -247,7 +247,7 @@ export default function ServicesPage() {
                       <p className="text-gray-400 text-sm mt-1">24/7 Security Operations Center</p>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     {socFeatures.map((feature, index) => (
                       <motion.div
