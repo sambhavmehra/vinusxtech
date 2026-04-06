@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 
 // Define path to our local JSON database
 const DATA_FILE = path.join(process.cwd(), 'data', 'reviews.json');
@@ -8,6 +9,10 @@ const DATA_FILE = path.join(process.cwd(), 'data', 'reviews.json');
 // Helper to read data safely
 function getReviewsData() {
   try {
+    const DATA_DIR = path.dirname(DATA_FILE);
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
     if (!fs.existsSync(DATA_FILE)) {
       fs.writeFileSync(DATA_FILE, '[]', 'utf8');
       return [];
@@ -59,6 +64,12 @@ export async function POST(req: Request) {
 
     const allReviews = getReviewsData();
     allReviews.push(newReview);
+    
+    // Ensure the directory exists before saving on POST
+    const DATA_DIR = path.dirname(DATA_FILE);
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
     fs.writeFileSync(DATA_FILE, JSON.stringify(allReviews, null, 2), 'utf8');
 
     // 2. Generate Approval Link
