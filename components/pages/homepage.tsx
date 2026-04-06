@@ -8,7 +8,7 @@ import {
   Network, ShieldCheck, Cpu, Code2, ArrowRight, 
   Shield, Server, Zap, ChevronDown,
   Brain, Lock, Workflow, Terminal, Globe, Layers,
-  ArrowUpRight, Sparkles
+  ArrowUpRight, Sparkles, Star, Quote
 } from 'lucide-react';
 
 // Dynamically import the 3D scene to avoid SSR issues
@@ -244,6 +244,17 @@ export default function HomePage() {
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  const [reviews, setReviews] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('/api/review')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setReviews(data);
+      })
+      .catch(console.error);
+  }, []);
 
   // Ultra-smooth spring for text parallax — low stiffness = buttery feel
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 40, damping: 30, mass: 1 });
@@ -689,7 +700,84 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ═══════════════════ SECTION 6: CTA ═══════════════════ */}
+        {/* ═══════════════════ SECTION 6: REVIEWS ═══════════════════ */}
+        {reviews.length > 0 && (
+          <section className="relative min-h-[80vh] flex items-center py-32 overflow-hidden">
+            <div className="container mx-auto px-4 max-w-7xl">
+              <RevealSection>
+                <div className="text-center mb-20">
+                  <div className="inline-flex items-center gap-4 mb-6 justify-center">
+                    <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#ffb347]" />
+                    <h2 className="text-[11px] font-bold tracking-[0.3em] text-[#ffb347] uppercase font-mono">Testimonials</h2>
+                    <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#ffb347]" />
+                  </div>
+                  <h3 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight">
+                    Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffb347] to-[#ff00ff]">Reviews</span>
+                  </h3>
+                </div>
+              </RevealSection>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {reviews.map((testimonial, i) => {
+                  const colors = ['#ffb347', '#00d4ff', '#a855f7', '#00ff88'];
+                  const color = colors[i % colors.length];
+                  
+                  return (
+                    <RevealSection key={testimonial.id || i} delay={i * 0.15}>
+                      <motion.div
+                        whileHover={{ y: -6, scale: 1.02 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                        className="glass-card rounded-2xl p-8 group relative overflow-hidden h-full flex flex-col justify-between"
+                      >
+                        {/* Background accent */}
+                        <div 
+                          className="absolute top-0 right-0 w-32 h-32 rounded-full blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"
+                          style={{ background: color }}
+                        />
+                        
+                        <div>
+                          <div className="flex justify-between items-start mb-6">
+                            <Quote className="w-8 h-8 opacity-20" style={{ color }} />
+                            <div className="flex gap-1">
+                              {[...Array(testimonial.rating || 5)].map((_, idx) => (
+                                <Star key={idx} className="w-3.5 h-3.5 fill-current" style={{ color }} />
+                              ))}
+                            </div>
+                          </div>
+                          <p className="text-gray-300 font-light text-base leading-relaxed mb-8 relative z-10 italic">
+                            "{testimonial.message}"
+                          </p>
+                        </div>
+
+                        <div className="border-t border-white/10 pt-6 relative z-10 flex items-center gap-4">
+                          {/* Client Image */}
+                          <img 
+                            src={testimonial.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`} 
+                            alt={testimonial.name} 
+                            className="w-12 h-12 rounded-full object-cover border-2 shadow-lg flex-shrink-0" 
+                            style={{ borderColor: `${color}40` }}
+                          />
+                          
+                          {/* Client Details */}
+                          <div>
+                            <h4 className="text-white font-bold text-base">{testimonial.name}</h4>
+                            {testimonial.role && (
+                              <p className="text-[9px] uppercase tracking-widest text-gray-400 font-mono mt-0.5">
+                                {testimonial.role} {testimonial.company && `, ${testimonial.company}`}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </motion.div>
+                    </RevealSection>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ═══════════════════ SECTION 7: CTA ═══════════════════ */}
         <section className="relative min-h-[90vh] flex items-center justify-center py-32 overflow-hidden">
           {/* Ambient glow */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

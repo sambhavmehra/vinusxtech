@@ -13,6 +13,7 @@ const footerLinks = {
     { name: 'Projects', href: '/projects' },
     { name: 'Security', href: '/security' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Leave a Review', href: '/review' },
   ],
   services: [
     'AI Solutions',
