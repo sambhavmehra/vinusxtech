@@ -155,12 +155,12 @@ function BentoCard({
             >
               <Icon className="w-6 h-6" style={{ color }} />
             </div>
-            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest transition-all duration-300 opacity-50 group-hover:opacity-100" style={{ color }}>
+            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest transition-all duration-300 opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100" style={{ color }}>
               Explore <ArrowUpRight className="w-3 h-3" />
             </div>
           </div>
           
-          <h4 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300" style={{ backgroundImage: `linear-gradient(135deg, white, ${color})` }}>{title}</h4>
+          <h4 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300" style={{ backgroundImage: `linear-gradient(135deg, white, ${color})`, WebkitBackgroundClip: 'text' }}>{title}</h4>
           <p className="text-gray-500 font-light leading-relaxed text-sm line-clamp-3">{desc}</p>
         </motion.div>
       </RevealSection>
@@ -182,7 +182,7 @@ function BentoCard({
             <motion.div
               layoutId={`bento-${title.replace(/\s+/g, '-')}`}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="glass-card w-full max-w-3xl rounded-[2.5rem] p-8 md:p-12 relative z-10 flex flex-col shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+              className="glass-card w-full max-w-3xl rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-8 md:p-12 relative z-10 flex flex-col shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
               style={{ borderColor: `${color}40`, boxShadow: `0 0 80px ${color}20` }}
             >
               {/* Modal Glow */}
@@ -199,7 +199,7 @@ function BentoCard({
                   >
                     <Icon className="w-6 h-6 sm:w-8 sm:h-8" style={{ color }} />
                   </div>
-                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, white, ${color})` }}>{title}</h4>
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, white, ${color})`, WebkitBackgroundClip: 'text' }}>{title}</h4>
                 </div>
                 
                 <button 
@@ -300,11 +300,11 @@ export default function HomePage() {
               className="relative"
             >
               {/* Massive ambient glow behind the text */}
-              <h1 className="absolute inset-0 blur-[60px] opacity-40 text-[#00d4ff] text-6xl sm:text-7xl md:text-[9rem] font-black tracking-[-0.04em] leading-[0.85] uppercase pointer-events-none translate-y-2">
+              <h1 className="absolute inset-0 blur-[60px] opacity-40 text-[#00d4ff] text-5xl sm:text-7xl md:text-[9rem] font-black tracking-[-0.04em] leading-[0.85] uppercase pointer-events-none translate-y-2">
                 V<span className="opacity-0">i</span>nusXTech
               </h1>
               
-              <h1 className="relative text-6xl sm:text-7xl md:text-[9rem] font-black tracking-[-0.04em] leading-[0.85] mb-8 uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/20 drop-shadow-2xl">
+              <h1 className="relative text-5xl sm:text-7xl md:text-[9rem] font-black tracking-[-0.04em] leading-[0.85] mb-8 uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/20 drop-shadow-2xl">
                 V<span className="opacity-0">i</span>nusXTech
               </h1>
             </motion.div>
@@ -402,7 +402,7 @@ export default function HomePage() {
                   <div className="w-12 h-[1px] bg-gradient-to-r from-[#00d4ff] to-transparent" />
                   <h2 className="text-[11px] font-bold tracking-[0.3em] text-[#00d4ff] uppercase font-mono">Who We Are</h2>
                 </div>
-                <h3 className="text-5xl md:text-7xl font-bold mb-8 leading-[1.05] tracking-tight">
+                <h3 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-[1.05] tracking-tight">
                   Intelligence{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] to-[#a855f7]">
                     Amplified.
@@ -448,7 +448,7 @@ export default function HomePage() {
                   <h2 className="text-[11px] font-bold tracking-[0.3em] text-[#00ff88] uppercase font-mono">Capabilities</h2>
                   <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#00ff88]" />
                 </div>
-                <h3 className="text-5xl md:text-7xl font-bold tracking-tight">
+                <h3 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight">
                   Ecosystem <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff88] to-[#00d4ff]">Nodes</span>
                 </h3>
               </div>
@@ -573,7 +573,7 @@ export default function HomePage() {
                 <div className="w-12 h-[1px] bg-gradient-to-r from-[#a855f7] to-transparent" />
                 <h2 className="text-[11px] font-bold tracking-[0.3em] text-[#a855f7] uppercase font-mono">Arsenal</h2>
               </div>
-              <h3 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">
+              <h3 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 tracking-tight">
                 Technology <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a855f7] to-[#ff00ff]">Stack</span>
               </h3>
             </RevealSection>
@@ -622,7 +622,7 @@ export default function HomePage() {
                   <h2 className="text-[11px] font-bold tracking-[0.3em] text-gray-400 uppercase font-mono">Advantage</h2>
                   <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-white/30" />
                 </div>
-                <h3 className="text-5xl md:text-7xl font-bold tracking-tight">
+                <h3 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight">
                   Engineered for{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] to-[#00ff88]">
                     Dominance.
@@ -705,7 +705,7 @@ export default function HomePage() {
             </RevealSection>
 
             <RevealSection delay={0.1}>
-              <h2 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 tracking-tight leading-[0.9]">
+              <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black mb-8 tracking-tight leading-[0.9]">
                 Build with<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff88] via-[#00d4ff] to-[#a855f7]">
                   VinusXTech

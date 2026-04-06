@@ -203,7 +203,7 @@ export default function Chatbot() {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-24 right-6 w-[400px] h-[650px] shadow-2xl flex flex-col overflow-hidden z-50 origin-bottom-right"
+            className="fixed bottom-24 right-6 w-[calc(100vw-3rem)] sm:w-[400px] h-[70vh] sm:h-[650px] shadow-2xl flex flex-col overflow-hidden z-50 origin-bottom-right"
             style={{
               background: 'rgba(5, 5, 10, 0.85)',
               backdropFilter: 'blur(30px)',

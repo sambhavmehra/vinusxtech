@@ -95,7 +95,7 @@ export default function AboutPage() {
               <span className="text-xs font-medium tracking-widest uppercase text-gray-400">The VinusXTech Protocol</span>
             </motion.div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-[-0.03em] leading-[0.9] mb-8 uppercase">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-black tracking-[-0.03em] leading-[0.9] mb-8 uppercase">
               Engineering <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] via-[#a855f7] to-[#00ff88] drop-shadow-2xl">
                 The Future.

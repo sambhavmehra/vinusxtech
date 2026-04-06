@@ -59,7 +59,7 @@ export default function Navbar() {
               width={550}
               height={320}
               className={`object-contain transition-all duration-500 relative z-10 drop-shadow-2xl ${
-                scrolled ? 'h-[45px] md:h-[65px] w-auto' : 'h-[100px] md:h-[150px] w-auto'
+                scrolled ? 'h-[40px] md:h-[65px] w-auto' : 'h-[60px] md:h-[150px] w-auto'
               }`}
               priority
             />

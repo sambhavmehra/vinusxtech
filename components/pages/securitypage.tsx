@@ -89,7 +89,7 @@ export default function SecurityPage() {
               <span className="text-xs font-medium tracking-widest uppercase text-gray-400">Defense Operations</span>
             </motion.div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-[-0.03em] leading-[0.9] mb-8 uppercase">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-black tracking-[-0.03em] leading-[0.9] mb-8 uppercase">
               Cyber <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff88] via-[#00d4ff] to-[#a855f7]">
                 Security.
