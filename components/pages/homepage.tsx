@@ -8,7 +8,7 @@ import {
   Network, ShieldCheck, Cpu, Code2, ArrowRight, 
   Shield, Server, Zap, ChevronDown,
   Brain, Lock, Workflow, Terminal, Globe, Layers,
-  ArrowUpRight, Sparkles, Star, Quote
+  ArrowUpRight, Sparkles, Star, Quote, User
 } from 'lucide-react';
 
 // Dynamically import the 3D scene to avoid SSR issues
@@ -750,13 +750,22 @@ export default function HomePage() {
                         </div>
 
                         <div className="border-t border-white/10 pt-6 relative z-10 flex items-center gap-4">
-                          {/* Client Image */}
-                          <img 
-                            src={testimonial.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`} 
-                            alt={testimonial.name} 
-                            className="w-12 h-12 rounded-full object-cover border-2 shadow-lg flex-shrink-0" 
-                            style={{ borderColor: `${color}40` }}
-                          />
+                          {/* Client Image / Icon */}
+                          {testimonial.image ? (
+                            <img 
+                              src={testimonial.image} 
+                              alt={testimonial.name} 
+                              className="w-12 h-12 rounded-full object-cover border-2 shadow-lg flex-shrink-0" 
+                              style={{ borderColor: `${color}40` }}
+                            />
+                          ) : (
+                            <div 
+                              className="w-12 h-12 rounded-full border-2 shadow-lg flex-shrink-0 flex items-center justify-center bg-white/5"
+                              style={{ borderColor: `${color}40` }}
+                            >
+                              <User className="w-5 h-5 text-gray-300" />
+                            </div>
+                          )}
                           
                           {/* Client Details */}
                           <div>
