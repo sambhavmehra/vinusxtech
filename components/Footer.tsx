@@ -30,7 +30,13 @@ const footerLinks = {
   ],
 };
 
+import { usePathname } from 'next/navigation';
+
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname === '/s-admin') return null;
+
   return (
     <footer className="relative bg-[#050508]/80 backdrop-blur-2xl border-t border-white/[0.05] overflow-hidden mt-10">
       {/* Absolute ambient glows specific to footer */}

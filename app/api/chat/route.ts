@@ -1,20 +1,29 @@
 import Groq from 'groq-sdk';
+import fs from 'fs';
+import path from 'path';
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
+const dataFile = path.join(process.cwd(), 'data', 'prompt.json');
+
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
+
+    let systemPrompt = 'You are a helpful assistant.';
+    if (fs.existsSync(dataFile)) {
+      const data = JSON.parse(fs.readFileSync(dataFile, 'utf-8'));
+      if (data.systemPrompt) systemPrompt = data.systemPrompt;
+    }
 
     const chatCompletion = await groq.chat.completions.create({
       model: 'llama-3.1-8b-instant',
       messages: [
         {
           role: 'system',
-          content:
-            'You are a helpful and professional customer support assistant for VinusXTech, a premier cybersecurity and software development company. You help users understand services like VAPT, SOC Monitoring, AI Solutions, and custom Software Development. Be concise, polite, and professional. IMPORTANT: Always end your response with exactly 3 short follow-up questions the user could ask next. Prefix the questions exactly with "___FAQ:" and separate them with "|" (e.g., "... your response text... ___FAQ: Question 1?|Question 2?|Question 3?"). Do not use line breaks or numbers for the FAQs.',
+          content: systemPrompt,
         },
         ...messages,
       ],

@@ -148,7 +148,7 @@ export default function ReviewPage() {
                       <CheckCircle className="w-10 h-10 text-[#ffb347]" />
                     </div>
                     <h3 className="text-3xl font-black mb-3 text-white">Review Submitted!</h3>
-                    <p className="text-gray-400 text-lg">Thank you so much. We will review and verify it shortly.</p>
+                    <p className="text-gray-400 text-lg">Thanks for sharing your experience with us!</p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">

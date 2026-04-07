@@ -34,6 +34,8 @@ export default function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
+  if (pathname === '/s-admin') return null;
+
   return (
     <>
       <motion.nav

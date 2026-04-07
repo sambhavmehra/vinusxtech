@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 
 export async function POST(req: Request) {
   try {
@@ -108,6 +110,24 @@ export async function POST(req: Request) {
         { error: 'Failed to send email', details: errorData },
         { status: brevoResponse.status }
       );
+    }
+
+    try {
+      const messagesPath = path.join(process.cwd(), 'data', 'messages.json');
+      const fileData = fs.readFileSync(messagesPath, 'utf8');
+      const messagesDb = JSON.parse(fileData);
+      messagesDb.push({
+        id: crypto.randomUUID(),
+        name,
+        email,
+        company,
+        service,
+        message,
+        timestamp: new Date().toISOString()
+      });
+      fs.writeFileSync(messagesPath, JSON.stringify(messagesDb, null, 2));
+    } catch (dbError) {
+      console.error('[Contact] Failed to save message to db:', dbError);
     }
 
     return NextResponse.json({ success: true, message: 'Email sent successfully!' });

@@ -17,7 +17,10 @@ const initialFaqs = [
   "What is SOC?"
 ];
 
+import { usePathname } from 'next/navigation';
+
 export default function Chatbot() {
+  const pathname = usePathname();
   const [suggestedFaqs, setSuggestedFaqs] = useState<string[]>(initialFaqs);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -195,6 +198,8 @@ export default function Chatbot() {
     }
   }
 
+  if (pathname === '/s-admin') return null;
+
   return (
     <>
       <AnimatePresence>
@@ -220,8 +225,8 @@ export default function Chatbot() {
               <div className="flex items-center space-x-4 relative z-10">
                 <div className="relative">
                   <div className="absolute inset-0 bg-[#00ff88] rounded-full blur-[10px] opacity-40 animate-pulse" />
-                  <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-[#00ff88]/20 to-[#00d4ff]/20 border border-[#00ff88]/30 flex items-center justify-center">
-                    <Bot className="w-6 h-6 text-[#00ff88]" />
+                  <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-[#00ff88]/20 to-[#00d4ff]/20 border border-[#00ff88]/30 flex items-center justify-center p-2">
+                    <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
                   </div>
                   <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-[#00ff88] rounded-full border-2 border-[#05050a]" />
                 </div>
