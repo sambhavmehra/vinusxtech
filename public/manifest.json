@@ -1,0 +1,17 @@
+{
+  "name": "VinusXtech",
+  "short_name": "VinusXtech",
+  "description": "Enterprise-grade cybersecurity, AI solutions, and secure web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#050508",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
