@@ -20,12 +20,12 @@ const contactItems = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'info@vinusxtech.me',
+    value: 'vinusxtech@gmail.com',
     sub: 'We reply within 24 hours',
     color: '#00ff88',
     bg: 'rgba(0,255,136,0.08)',
     border: 'rgba(0,255,136,0.15)',
-    href: 'mailto:info@vinusxtech.me',
+    href: 'mailto:vinusxtech@gmail.com',
   },
   {
     icon: Phone,
@@ -107,7 +107,7 @@ export default function ContactPage() {
       }, 6000);
     } catch (error) {
       console.error('Failed to send message:', error);
-      alert('Failed to send message. Please ensure BREVO_API_KEY is set. Reach us at info@vinusxtech.me if this persists.');
+      alert('Failed to send message. Please ensure BREVO_API_KEY is set. Reach us at vinusxtech@gmail.com if this persists.');
     } finally {
       setLoading(false);
     }
@@ -246,44 +246,44 @@ export default function ContactPage() {
                           </div>
                           {/* Custom Animated Select */}
                           <div className="relative group" ref={dropdownRef}>
-                            <div 
-                                onClick={() => setIsServiceOpen(!isServiceOpen)}
-                                className="w-full bg-transparent border-b border-white/20 py-3 flex items-center justify-between cursor-pointer transition-colors hover:border-white/40"
+                            <div
+                              onClick={() => setIsServiceOpen(!isServiceOpen)}
+                              className="w-full bg-transparent border-b border-white/20 py-3 flex items-center justify-between cursor-pointer transition-colors hover:border-white/40"
                             >
-                                <span className={`text-sm ${formData.service ? 'text-white' : 'text-gray-500'}`}>
-                                    {formData.service ? serviceOptions.find(o => o.value === formData.service)?.label : 'Select a service...'}
-                                </span>
-                                <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isServiceOpen ? 'rotate-180 text-[#00ff88]' : ''}`} />
+                              <span className={`text-sm ${formData.service ? 'text-white' : 'text-gray-500'}`}>
+                                {formData.service ? serviceOptions.find(o => o.value === formData.service)?.label : 'Select a service...'}
+                              </span>
+                              <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isServiceOpen ? 'rotate-180 text-[#00ff88]' : ''}`} />
                             </div>
                             <label className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-[#00ff88]">
                               Interested In
                             </label>
 
                             <AnimatePresence>
-                                {isServiceOpen && (
-                                    <motion.div 
-                                        initial={{ opacity: 0, y: -10, filter: 'blur(5px)' }} 
-                                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} 
-                                        exit={{ opacity: 0, y: -10, filter: 'blur(5px)' }} 
-                                        transition={{ duration: 0.2 }}
-                                        className="absolute top-full left-0 w-full mt-2 bg-[#05050A]/95 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden z-50 shadow-[0_15px_40px_rgba(0,0,0,0.8)]"
-                                    >
-                                        <div className="p-1 flex flex-col">
-                                            {serviceOptions.map((opt) => (
-                                                <div 
-                                                    key={opt.value} 
-                                                    onClick={() => {
-                                                        setFormData({ ...formData, service: opt.value });
-                                                        setIsServiceOpen(false);
-                                                    }}
-                                                    className={`px-4 py-2.5 text-sm cursor-pointer transition-all rounded-lg ${formData.service === opt.value ? 'text-[#00ff88] bg-[#00ff88]/10' : 'text-gray-300 hover:text-white hover:bg-white/5'}`}
-                                                >
-                                                    {opt.label}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </motion.div>
-                                )}
+                              {isServiceOpen && (
+                                <motion.div
+                                  initial={{ opacity: 0, y: -10, filter: 'blur(5px)' }}
+                                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                  exit={{ opacity: 0, y: -10, filter: 'blur(5px)' }}
+                                  transition={{ duration: 0.2 }}
+                                  className="absolute top-full left-0 w-full mt-2 bg-[#05050A]/95 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden z-50 shadow-[0_15px_40px_rgba(0,0,0,0.8)]"
+                                >
+                                  <div className="p-1 flex flex-col">
+                                    {serviceOptions.map((opt) => (
+                                      <div
+                                        key={opt.value}
+                                        onClick={() => {
+                                          setFormData({ ...formData, service: opt.value });
+                                          setIsServiceOpen(false);
+                                        }}
+                                        className={`px-4 py-2.5 text-sm cursor-pointer transition-all rounded-lg ${formData.service === opt.value ? 'text-[#00ff88] bg-[#00ff88]/10' : 'text-gray-300 hover:text-white hover:bg-white/5'}`}
+                                      >
+                                        {opt.label}
+                                      </div>
+                                    ))}
+                                  </div>
+                                </motion.div>
+                              )}
                             </AnimatePresence>
                           </div>
                         </div>

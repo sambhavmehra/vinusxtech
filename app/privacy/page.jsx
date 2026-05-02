@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
             <div className="bg-white/[0.02] border border-white/10 rounded-xl p-6 font-mono text-sm text-gray-400">
               <p className="mb-1">VinusXTech Security Division</p>
               <p className="mb-1">Gandhi Nagar, Bhopal</p>
-              <p>Email: <a href="mailto:info@vinusxtech.me" className="text-[#00d4ff] hover:underline">info@vinusxtech.me</a></p>
+              <p>Email: <a href="mailto:vinusxtech@gmail.com" className="text-[#00d4ff] hover:underline">vinusxtech@gmail.com</a></p>
             </div>
           </section>
         </div>

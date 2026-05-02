@@ -106,7 +106,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col justify-center">
                 <span className="text-[9px] uppercase tracking-widest text-gray-500 block mb-0.5 font-mono">Email</span>
-                <a href="mailto:info@vinusxtech.me" className="text-gray-300 text-xs sm:text-sm group-hover:text-white transition-colors font-medium">info@vinusxtech.me</a>
+                <a href="mailto:vinusxtech@gmail.com" className="text-gray-300 text-xs sm:text-sm group-hover:text-white transition-colors font-medium">vinusxtech@gmail.com</a>
               </div>
             </li>
             <li className="flex items-start gap-4 group">
@@ -147,7 +147,7 @@ export default function Footer() {
           © {new Date().getFullYear()} VinusXTech. All rights reserved.
         </p>
       </div>
-      
+
       <CertificateViewer isOpen={isCertOpen} onClose={() => setIsCertOpen(false)} />
     </div>
 

@@ -18,7 +18,7 @@ import BorderGlow from '../ui/BorderGlow';
 // ── Reusable animated section wrapper ──────────────────────────────────────
 function RevealSection({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.15 });
+  const isInView = useInView(ref, { once: true, amount: 0.15 });
   return (
     <motion.div
       ref={ref}
@@ -27,10 +27,9 @@ function RevealSection({ children, className = '', delay = 0 }) {
       transition={{
         duration: 0.7,
         delay,
-        ease: [0.22, 1, 0.36, 1],  // Ultra-smooth ease-out
+        ease: [0.22, 1, 0.36, 1],
       }}
       className={className}
-      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </motion.div>
@@ -64,7 +63,7 @@ function MagneticButton({ children, href, variant = 'primary' }) {
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: 'spring', stiffness: 150, damping: 20, mass: 0.8 }}
-      className="inline-block group"
+      className="inline-block group w-full sm:w-auto"
     >
       <Link href={href}>
         <BorderGlow
@@ -74,7 +73,7 @@ function MagneticButton({ children, href, variant = 'primary' }) {
           edgeSensitivity={30}
           glowRadius={15}
           glowIntensity={variant === 'primary' ? 2 : 1}
-          className={`inline-block transition-all duration-300 ${variant === 'primary' ? 'border border-white/20 group-hover:bg-white/10' : 'border border-white/20 group-hover:bg-white/5'}`}
+          className={`inline-block transition-all duration-300 w-full ${variant === 'primary' ? 'border border-white/20 group-hover:bg-white/10' : 'border border-white/20 group-hover:bg-white/5'}`}
         >
           <button
             className="relative px-8 py-4 text-white font-bold rounded-full overflow-hidden transition-all duration-500 w-full h-full flex items-center justify-center gap-2"
@@ -272,6 +271,11 @@ export default function HomePage() {
   });
 
   const [reviews, setReviews] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
   useEffect(() => {
     fetch('/api/review')
@@ -296,16 +300,18 @@ export default function HomePage() {
         {/* Colorful glows removed to achieve the requested Option 1 (Pure Deep Black) */}
       </div>
 
-      {/* Noise overlay for premium feel */}
-      <div className="fixed inset-0 pointer-events-none z-[1] opacity-[0.015]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-        backgroundRepeat: 'repeat',
-      }} />
+      {/* Noise overlay for premium feel — desktop only (SVG filters are GPU-heavy on mobile) */}
+      {!isMobile && (
+        <div className="fixed inset-0 pointer-events-none z-[1] opacity-[0.015]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+        }} />
+      )}
 
       <div className="relative z-10 w-full">
 
         {/* ═══════════════════ SECTION 1: HERO ═══════════════════ */}
-        <section className="relative min-h-screen flex flex-col items-start justify-center pt-32 px-0 sm:px-4 overflow-hidden">
+        <section className="relative min-h-screen flex flex-col items-start justify-center pt-24 sm:pt-32 px-0 sm:px-4 overflow-hidden">
           <motion.div
             style={{ opacity: heroOpacity, y: heroY, scale: heroScale, willChange: 'transform, opacity' }}
             className="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-4 sm:px-8 md:px-16 pointer-events-auto"
@@ -333,20 +339,20 @@ export default function HomePage() {
                 className="relative"
               >
                 {/* Massive ambient glow behind the text - Static color prevents lag */}
-                <h1 className="absolute inset-0 blur-[60px] opacity-20 text-white text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-[-0.02em] leading-[1.1] pointer-events-none translate-y-2">
+                <h1 className="absolute inset-0 blur-[60px] opacity-20 text-white text-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-[-0.02em] leading-[1.1] pointer-events-none translate-y-2">
                   We Don&apos;t Build Software.<br />We Build Intelligent Power.
                 </h1>
 
                 {/* Solid White Text */}
                 <motion.h1
-                  className="relative text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black tracking-[-0.02em] leading-[1.1] mb-8 text-white drop-shadow-2xl"
+                  className="relative text-3xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black tracking-[-0.02em] leading-[1.1] mb-6 sm:mb-8 text-white drop-shadow-2xl"
                 >
                   We Don&apos;t Build Software.<br />We Build Intelligent Power.
                 </motion.h1>
               </motion.div>
 
               {/* Tagline with staggered word animation */}
-              <div className="text-lg md:text-xl mb-12 max-w-3xl font-light leading-relaxed flex flex-wrap justify-start items-center gap-x-2 gap-y-1 relative z-10 w-full text-gray-300">
+              <div className="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-3xl font-light leading-relaxed flex flex-wrap justify-start items-center gap-x-2 gap-y-1 relative z-10 w-full text-gray-300">
                 <motion.span
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -398,7 +404,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="flex flex-wrap gap-4 justify-start w-full"
+                className="flex flex-col sm:flex-row gap-4 justify-start w-full sm:w-auto"
               >
                 <MagneticButton href="/contact" variant="primary">
                   Start Your Project <ArrowRight className="w-4 h-4" />
@@ -409,7 +415,7 @@ export default function HomePage() {
               </motion.div>
             </div>
 
-            {/* Right Column: Intelligent Power Animation */}
+            {/* Right Column: Intelligent Power Animation — desktop only */}
             <div className="hidden lg:flex items-center justify-center relative w-full aspect-square max-h-[600px] pointer-events-none">
               {/* Central Glowing Core */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -430,7 +436,7 @@ export default function HomePage() {
                 />
               </div>
 
-              {/* Orbital Rings - 3D effect */}
+              {/* Orbital Rings */}
               <motion.div
                 animate={{ rotateX: [60, 60], rotateZ: [0, 360] }}
                 transition={{ rotateZ: { duration: 20, repeat: Infinity, ease: "linear" } }}
@@ -453,7 +459,7 @@ export default function HomePage() {
               />
 
               {/* Floating Data Particles */}
-              {[...Array(8)].map((_, i) => (
+              {[...Array(6)].map((_, i) => (
                 <motion.div
                   key={i}
                   animate={{
@@ -465,7 +471,7 @@ export default function HomePage() {
                   transition={{
                     duration: 3 + Math.random() * 2,
                     repeat: Infinity,
-                    delay: i * 0.4,
+                    delay: i * 0.5,
                     ease: "easeInOut"
                   }}
                   className="absolute w-2 h-2 bg-white rounded-full shadow-[0_0_10px_#ffffff]"
@@ -478,12 +484,12 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Scroll indicator */}
+          {/* Scroll indicator — hidden on mobile to avoid overlap with CTAs */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-3"
           >
             <span className="text-[10px] uppercase tracking-[0.4em] text-gray-600 font-medium">Scroll</span>
             <motion.div
