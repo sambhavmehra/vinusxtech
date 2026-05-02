@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Social icons */}
           <div className="flex items-center gap-4">
-            {footerLinks.socials.map((social) => (<motion.a key={social.label} href={social.href} whileHover={{ y: -4, scale: 1.05 }} transition={{ type: 'spring', stiffness: 400, damping: 10 }} className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-gray-400 transition-all duration-300 relative overflow-hidden group" aria-label={social.label}>
+            {footerLinks.socials.map((social) => (<motion.a key={social.label} href={social.href} whileHover={{ y: -4, scale: 1.05 }} transition={{ type: 'spring', stiffness: 400, damping: 10 }} className="w-12 h-12 rounded-xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-gray-400 transition-all duration-300 relative overflow-hidden group" aria-label={social.label}>
               <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300" style={{ backgroundColor: social.color }} />
               <social.icon className="w-4 h-4 relative z-10 transition-colors duration-300 group-hover:text-white" />
             </motion.a>))}
@@ -70,10 +70,10 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div className="col-span-1 lg:col-span-2">
-          <h3 className="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-gray-400 uppercase mb-4 font-mono">Navigate</h3>
+          <h2 className="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-gray-400 uppercase mb-4 font-mono">Navigate</h2>
           <ul className="space-y-3">
             {footerLinks.navigation.map((item) => (<li key={item.name}>
-              <Link href={item.href} className="text-gray-500 hover:text-[#00d4ff] transition-colors duration-300 text-xs sm:text-sm flex items-center gap-1.5 group font-medium">
+              <Link href={item.href} className="text-gray-400 hover:text-[#00d4ff] transition-colors duration-300 text-xs sm:text-sm flex items-center gap-1.5 group font-medium">
                 <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
                 <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
               </Link>
@@ -83,10 +83,10 @@ export default function Footer() {
 
         {/* Services */}
         <div className="col-span-1 lg:col-span-3">
-          <h3 className="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-gray-400 uppercase mb-4 font-mono">Capabilities</h3>
+          <h2 className="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-gray-400 uppercase mb-4 font-mono">Capabilities</h2>
           <ul className="space-y-3">
             {footerLinks.services.map((service) => (<li key={service}>
-              <Link href="/services" className="text-gray-500 hover:text-[#00ff88] transition-colors duration-300 text-xs sm:text-sm flex items-center group font-medium">
+              <Link href="/services" className="text-gray-400 hover:text-[#00ff88] transition-colors duration-300 text-xs sm:text-sm flex items-center group font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88]/50 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="group-hover:translate-x-1 transition-transform duration-300">{service}</span>
               </Link>
@@ -96,32 +96,24 @@ export default function Footer() {
 
         {/* Contact */}
         <div className="md:col-span-2 lg:col-span-3">
-          <h3 className="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-gray-400 uppercase mb-4 font-mono">Reach Out</h3>
+          <h2 className="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-gray-400 uppercase mb-4 font-mono">Reach Out</h2>
           <ul className="space-y-4">
             <li className="flex items-start gap-4 group">
               <div className="w-9 h-9 rounded-xl bg-[#00ff88]/5 border border-[#00ff88]/10 flex items-center justify-center shrink-0 group-hover:bg-[#00ff88]/10 transition-colors">
                 <Mail className="w-3.5 h-3.5 text-[#00ff88]" />
               </div>
               <div className="flex flex-col justify-center">
-                <span className="text-[9px] uppercase tracking-widest text-gray-500 block mb-0.5 font-mono">Email</span>
+                <span className="text-[9px] uppercase tracking-widest text-gray-400 block mb-0.5 font-mono">Email</span>
                 <a href="mailto:vinusxtech@gmail.com" className="text-gray-300 text-xs sm:text-sm group-hover:text-white transition-colors font-medium">vinusxtech@gmail.com</a>
               </div>
             </li>
-            <li className="flex items-start gap-4 group">
-              <div className="w-9 h-9 rounded-xl bg-[#00d4ff]/5 border border-[#00d4ff]/10 flex items-center justify-center shrink-0 group-hover:bg-[#00d4ff]/10 transition-colors">
-                <Phone className="w-3.5 h-3.5 text-[#00d4ff]" />
-              </div>
-              <div className="flex flex-col justify-center">
-                <span className="text-[9px] uppercase tracking-widest text-gray-500 block mb-0.5 font-mono">Phone</span>
-                <a href="tel:+919993016789" className="text-gray-300 text-xs sm:text-sm group-hover:text-white transition-colors font-medium">+91 9993016789</a>
-              </div>
-            </li>
+
             <li className="flex items-start gap-4 group">
               <div className="w-9 h-9 rounded-xl bg-[#a855f7]/5 border border-[#a855f7]/10 flex items-center justify-center shrink-0 group-hover:bg-[#a855f7]/10 transition-colors">
                 <MapPin className="w-3.5 h-3.5 text-[#a855f7]" />
               </div>
               <div className="flex flex-col justify-center">
-                <span className="text-[9px] uppercase tracking-widest text-gray-500 block mb-0.5 font-mono">Location</span>
+                <span className="text-[9px] uppercase tracking-widest text-gray-400 block mb-0.5 font-mono">Location</span>
                 <span className="text-gray-300 text-xs sm:text-sm group-hover:text-white transition-colors font-medium">Gandhi Nagar, Bhopal</span>
               </div>
             </li>
@@ -132,16 +124,16 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="mt-12 pt-6 border-t border-white/[0.05] flex flex-col items-center justify-center gap-3 relative z-10 pb-4 md:pb-0">
         <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
-          <Link href="/privacy" className="text-gray-500 text-[10px] sm:text-xs font-medium hover:text-white transition-colors">Privacy Policy</Link>
+          <Link href="/privacy" className="text-gray-400 text-[10px] sm:text-xs font-medium hover:text-white transition-colors py-2 px-1">Privacy Policy</Link>
           <span className="text-gray-700 text-xs hidden sm:inline">•</span>
-          <Link href="/terms" className="text-gray-500 text-[10px] sm:text-xs font-medium hover:text-white transition-colors">Terms of Service</Link>
+          <Link href="/terms" className="text-gray-400 text-[10px] sm:text-xs font-medium hover:text-white transition-colors py-2 px-1">Terms of Service</Link>
           <span className="text-gray-700 text-xs hidden sm:inline">•</span>
-          <button onClick={() => setIsCertOpen(true)} className="flex items-center gap-1.5 text-gray-500 text-[10px] sm:text-xs font-medium hover:text-[#00ff88] transition-colors">
+          <button onClick={() => setIsCertOpen(true)} className="flex items-center gap-1.5 text-gray-400 text-[10px] sm:text-xs font-medium hover:text-[#00ff88] transition-colors py-2 px-1">
             <ShieldCheck className="w-3 h-3" />
             Udyam Registration
           </button>
         </div>
-        <p className="text-gray-500 text-[10px] sm:text-xs font-mono font-medium text-center">
+        <p className="text-gray-400 text-[10px] sm:text-xs font-mono font-medium text-center">
           © {new Date().getFullYear()} VinusXTech. All rights reserved.
         </p>
       </div>

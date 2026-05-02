@@ -19,33 +19,23 @@ function Reveal({ children, className = '', delay = 0 }) {
 const contactItems = [
   {
     icon: Mail,
-    label: 'Email',
+    label: 'Email Us',
     value: 'vinusxtech@gmail.com',
-    sub: 'We reply within 24 hours',
+    sub: 'We usually respond within 2-4 hours',
     color: '#00ff88',
     bg: 'rgba(0,255,136,0.08)',
     border: 'rgba(0,255,136,0.15)',
     href: 'mailto:vinusxtech@gmail.com',
   },
   {
-    icon: Phone,
-    label: 'Phone',
-    value: '+91 9993016789',
-    sub: 'Mon – Fri, 9 AM – 6 PM IST',
-    color: '#00d4ff',
-    bg: 'rgba(0,212,255,0.08)',
-    border: 'rgba(0,212,255,0.15)',
-    href: 'tel:+919993016789',
-  },
-  {
     icon: MapPin,
-    label: 'HQ',
+    label: 'Visit Us',
     value: 'Gandhi Nagar, Bhopal',
     sub: 'Madhya Pradesh, India',
     color: '#a855f7',
     bg: 'rgba(168,85,247,0.08)',
     border: 'rgba(168,85,247,0.15)',
-    href: '#',
+    href: 'https://maps.google.com',
   },
 ];
 
@@ -179,9 +169,9 @@ export default function ContactPage() {
                               <item.icon className="w-5 h-5" style={{ color: item.color }} />
                             </div>
                             <div>
-                              <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 mb-1">{item.label}</p>
+                              <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-1">{item.label}</p>
                               <p className="text-sm font-medium text-white transition-colors duration-300 group-hover:text-white" style={{ textShadow: `0 0 10px ${item.color}40` }}>{item.value}</p>
-                              <p className="text-xs text-gray-500 mt-1">{item.sub}</p>
+                              <p className="text-xs text-gray-400 mt-1">{item.sub}</p>
                             </div>
                           </a>
                         ))}
@@ -225,13 +215,13 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                           <div className="relative group">
                             <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-transparent border-b border-white/20 py-3 text-white text-sm focus:outline-none focus:border-[#00ff88] transition-colors peer placeholder-transparent" placeholder="Rahul Sharma" />
-                            <label htmlFor="name" className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-[11px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#00ff88]">
+                            <label htmlFor="name" className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-[11px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#00ff88]">
                               Full Name *
                             </label>
                           </div>
                           <div className="relative group">
                             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-transparent border-b border-white/20 py-3 text-white text-sm focus:outline-none focus:border-[#00ff88] transition-colors peer placeholder-transparent" placeholder="rahul@example.com" />
-                            <label htmlFor="email" className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-[11px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#00ff88]">
+                            <label htmlFor="email" className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-[11px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#00ff88]">
                               Email Address *
                             </label>
                           </div>
@@ -240,7 +230,7 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                           <div className="relative group">
                             <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className="w-full bg-transparent border-b border-white/20 py-3 text-white text-sm focus:outline-none focus:border-[#00ff88] transition-colors peer placeholder-transparent" placeholder="Company Name" />
-                            <label htmlFor="company" className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-[11px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#00ff88]">
+                            <label htmlFor="company" className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-[11px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#00ff88]">
                               Company (Optional)
                             </label>
                           </div>
@@ -250,7 +240,7 @@ export default function ContactPage() {
                               onClick={() => setIsServiceOpen(!isServiceOpen)}
                               className="w-full bg-transparent border-b border-white/20 py-3 flex items-center justify-between cursor-pointer transition-colors hover:border-white/40"
                             >
-                              <span className={`text-sm ${formData.service ? 'text-white' : 'text-gray-500'}`}>
+                              <span className={`text-sm ${formData.service ? 'text-white' : 'text-gray-400'}`}>
                                 {formData.service ? serviceOptions.find(o => o.value === formData.service)?.label : 'Select a service...'}
                               </span>
                               <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isServiceOpen ? 'rotate-180 text-[#00ff88]' : ''}`} />
@@ -290,7 +280,7 @@ export default function ContactPage() {
 
                         <div className="relative group pt-4">
                           <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={4} className="w-full bg-transparent border-b border-white/20 py-3 text-white text-sm focus:outline-none focus:border-[#00ff88] transition-colors peer placeholder-transparent resize-none" placeholder="Tell us about your project..." />
-                          <label htmlFor="message" className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-[11px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#00ff88]">
+                          <label htmlFor="message" className="absolute left-0 -top-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal peer-focus:-top-3.5 peer-focus:text-[11px] peer-focus:font-bold peer-focus:tracking-[0.2em] peer-focus:uppercase peer-focus:text-[#00ff88]">
                             Message *
                           </label>
                         </div>
@@ -299,7 +289,7 @@ export default function ContactPage() {
                           <button
                             type="submit"
                             disabled={loading}
-                            className={`group relative w-full overflow-hidden rounded-full py-4 text-sm font-bold tracking-widest uppercase transition-all duration-300 ${loading ? 'bg-gray-800 text-gray-500 cursor-not-allowed' : 'bg-white text-black hover:bg-[#00ff88] hover:text-black hover:shadow-[0_0_30px_rgba(0,255,136,0.5)]'}`}
+                            className={`group relative w-full overflow-hidden rounded-full py-4 text-sm font-bold tracking-widest uppercase transition-all duration-300 ${loading ? 'bg-gray-800 text-gray-400 cursor-not-allowed' : 'bg-white text-black hover:bg-[#00ff88] hover:text-black hover:shadow-[0_0_30px_rgba(0,255,136,0.5)]'}`}
                           >
                             <div className="relative z-10 flex items-center justify-center gap-3">
                               {loading ? (

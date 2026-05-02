@@ -181,7 +181,7 @@ export default function SecurityPage() {
                   </div>
                   <h4 className="text-lg font-bold text-white">{tool.name}</h4>
                 </div>
-                <p className="text-gray-500 text-sm leading-relaxed relative z-10">{tool.description}</p>
+                <p className="text-gray-400 text-sm leading-relaxed relative z-10">{tool.description}</p>
               </motion.div>
             </Reveal>))}
           </div>

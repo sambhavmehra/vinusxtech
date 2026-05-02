@@ -94,7 +94,7 @@ export default function AboutPage() {
               }}>
                 <Counter value={stat.count} suffix="+" />
               </div>
-              <div className="text-xs md:text-sm font-bold uppercase tracking-widest text-gray-500">{stat.name}</div>
+              <div className="text-xs md:text-sm font-bold uppercase tracking-widest text-gray-400">{stat.name}</div>
             </RevealSection>))}
           </div>
         </div>

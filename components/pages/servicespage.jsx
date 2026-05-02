@@ -102,7 +102,7 @@ export default function ServicesPage() {
               </div>
 
               <h4 className="text-xl font-bold mb-3 group-hover:text-white text-gray-200 transition-colors">{service.title}</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">{service.desc}</p>
+              <p className="text-gray-400 text-sm leading-relaxed">{service.desc}</p>
             </motion.div>
           </RevealSection>))}
         </div>

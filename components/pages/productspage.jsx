@@ -184,7 +184,7 @@ export default function ProductsPage() {
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>View Project</span>
                     </motion.button>
-                    <motion.button whileHover={{ x: 3 }} className="flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-gray-300 transition-colors">
+                    <motion.button whileHover={{ x: 3 }} className="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-gray-300 transition-colors">
                       <Github className="w-3.5 h-3.5" />
                       <span>Code</span>
                     </motion.button>

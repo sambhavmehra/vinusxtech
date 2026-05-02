@@ -84,6 +84,7 @@ export default function LeadPopup() {
             {/* Close button */}
             <button
               onClick={handleClose}
+              aria-label="Close Lead Form"
               className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all z-20"
             >
               <X className="w-4 h-4" />
@@ -98,7 +99,7 @@ export default function LeadPopup() {
                 <div className="w-20 h-20 mx-auto mb-5 rounded-full bg-[#00ff88]/15 flex items-center justify-center">
                   <Rocket className="w-10 h-10 text-[#00ff88]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Thank You! 🎉</h3>
+                <div className="text-2xl font-bold text-white">Thank You! 🎉</div>
                 <p className="text-gray-400 text-sm mt-3 max-w-xs mx-auto">
                   Our team will reach out to you within 24 hours.
                 </p>
@@ -114,13 +115,13 @@ export default function LeadPopup() {
                   >
                     <Rocket className="w-7 h-7 text-[#00ff88]" />
                   </motion.div>
-                  <h3 className="text-xl font-bold text-white">
+                  <div className="text-xl font-bold text-white">
                     Let's Build Something{' '}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff88] to-[#00d4ff]">
                       Amazing
                     </span>
-                  </h3>
-                  <p className="text-gray-500 text-xs mt-2 max-w-xs mx-auto">
+                  </div>
+                  <p className="text-gray-400 text-xs mt-2 max-w-xs mx-auto">
                     Share your details and our experts will craft a custom solution for your business.
                   </p>
                 </div>
@@ -128,7 +129,7 @@ export default function LeadPopup() {
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="relative">
-                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Full Name *"
@@ -138,7 +139,7 @@ export default function LeadPopup() {
                     />
                   </div>
                   <div className="relative">
-                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="email"
                       placeholder="Email Address *"
@@ -148,7 +149,7 @@ export default function LeadPopup() {
                     />
                   </div>
                   <div className="relative">
-                    <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                    <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="tel"
                       placeholder="Phone Number *"
@@ -158,7 +159,7 @@ export default function LeadPopup() {
                     />
                   </div>
                   <div className="relative">
-                    <Building2 className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                    <Building2 className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Company (Optional)"

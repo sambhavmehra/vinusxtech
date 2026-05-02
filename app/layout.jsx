@@ -165,12 +165,7 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/logo.png" />
 
         {/* Font Optimization */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+
 
         {/* Structured Data */}
         <script

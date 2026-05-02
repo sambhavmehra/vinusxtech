@@ -128,7 +128,7 @@ function AnimatedStat({ value, label, suffix = '' }) {
       <div className="text-4xl md:text-6xl font-black text-gradient mb-2 font-mono">
         {count}{suffix}
       </div>
-      <div className="text-xs uppercase tracking-[0.25em] text-gray-500 font-medium">{label}</div>
+      <div className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium">{label}</div>
     </div>
   );
 }
@@ -186,7 +186,7 @@ function BentoCard({
           </div>
 
           <h4 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300" style={{ backgroundImage: `linear-gradient(135deg, white, ${color})`, WebkitBackgroundClip: 'text' }}>{title}</h4>
-          <p className="text-gray-500 font-light leading-relaxed text-sm line-clamp-3">{desc}</p>
+          <p className="text-gray-400 font-light leading-relaxed text-sm line-clamp-3">{desc}</p>
         </motion.div>
       </RevealSection>
 
@@ -239,7 +239,7 @@ function BentoCard({
 
               {features.length > 0 && (
                 <div className="border-t border-white/10 pt-8 relative z-10">
-                  <h5 className="text-xs uppercase tracking-[0.25em] font-mono text-gray-500 mb-6">Core Capabilities</h5>
+                  <h5 className="text-xs uppercase tracking-[0.25em] font-mono text-gray-400 mb-6">Core Capabilities</h5>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3 bg-white/[0.02] border border-white/5 rounded-xl p-4">
@@ -517,7 +517,7 @@ export default function HomePage() {
                     Amplified.
                   </span>
                 </h3>
-                <p className="text-lg text-gray-500 leading-relaxed font-light mb-8 max-w-lg">
+                <p className="text-lg text-gray-400 leading-relaxed font-light mb-8 max-w-lg">
                 At VinusXTech, we create intelligent digital experiences that keep businesses ahead of the curve. From fast, secure websites and custom mobile apps to powerful AI solutions, our goal is to simplify technology and deliver real results. We handle the code, security, and performance so you can focus on what you do best—growing your business.
                 </p>
                 <Link href="/about" className="inline-flex items-center gap-3 text-white font-medium text-sm hover:text-[#00d4ff] transition-colors group">
@@ -796,7 +796,7 @@ export default function HomePage() {
                     </div>
 
                     <h4 className="text-xl font-bold mb-3">{item.title}</h4>
-                    <p className="text-gray-500 font-light text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-gray-400 font-light text-sm leading-relaxed">{item.desc}</p>
                   </motion.div>
                 </RevealSection>
               ))}

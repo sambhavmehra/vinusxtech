@@ -171,7 +171,7 @@ export default function Navbar() {
                     <span className="absolute -top-2 left-1/2 -translate-x-1/2 text-[7px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-[#a855f7]/20 text-[#a855f7] border border-[#a855f7]/30 whitespace-nowrap leading-none">
                       Soon
                     </span>
-                    <span className="text-gray-500">{item.name}</span>
+                    <span className="text-gray-400">{item.name}</span>
                   </div>
                 ) : (
                   <Link
@@ -228,7 +228,8 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden text-white focus:outline-none relative w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/10"
+              aria-label="Toggle mobile menu"
+              className="lg:hidden text-white focus:outline-none relative w-12 h-12 flex items-center justify-center bg-white/5 rounded-full border border-white/10"
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
@@ -291,7 +292,7 @@ export default function Navbar() {
                                 key={dropItem.name}
                                 href={dropItem.path}
                                 onClick={() => setIsOpen(false)}
-                                className="text-xl text-gray-500 hover:text-white transition-colors"
+                                className="text-xl text-gray-400 hover:text-white transition-colors"
                               >
                                 {dropItem.name}
                               </Link>
@@ -303,7 +304,7 @@ export default function Navbar() {
                   ) : item.comingSoon ? (
                     <div className="relative text-3xl font-light py-2 flex flex-col items-center justify-center cursor-not-allowed opacity-50">
                       <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#a855f7]/20 text-[#a855f7] border border-[#a855f7]/30 mb-2">Soon</span>
-                      <span className="text-gray-500 tracking-wide">{item.name}</span>
+                      <span className="text-gray-400 tracking-wide">{item.name}</span>
                     </div>
                   ) : (
                     <Link

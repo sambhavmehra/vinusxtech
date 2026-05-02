@@ -125,29 +125,29 @@ export default function ReviewPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label htmlFor="name" className="block text-xs font-semibold tracking-widest uppercase text-gray-500 mb-2">
+                        <label htmlFor="name" className="block text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">
                           Full Name *
                         </label>
                         <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="Jane Doe" className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:border-[#ffb347]/60 focus:bg-[#ffb347]/[0.03] transition-all duration-300 text-white placeholder-gray-600 text-sm"/>
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-xs font-semibold tracking-widest uppercase text-gray-500 mb-2">
+                        <label htmlFor="email" className="block text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">
                           Work Email *
                         </label>
                         <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required placeholder="jane@company.com" className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:border-[#ffb347]/60 focus:bg-[#ffb347]/[0.03] transition-all duration-300 text-white placeholder-gray-600 text-sm"/>
-                        <p className="text-[10px] text-gray-500 mt-1">We use this to automatically fetch your Gravatar profile picture.</p>
+                        <p className="text-[10px] text-gray-400 mt-1">We use this to automatically fetch your Gravatar profile picture.</p>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label htmlFor="company" className="block text-xs font-semibold tracking-widest uppercase text-gray-500 mb-2">
+                        <label htmlFor="company" className="block text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">
                           Company Name (Optional)
                         </label>
                         <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Acme Corp" className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:border-[#ffb347]/60 focus:bg-[#ffb347]/[0.03] transition-all duration-300 text-white placeholder-gray-600 text-sm"/>
                       </div>
                       <div>
-                        <label htmlFor="role" className="block text-xs font-semibold tracking-widest uppercase text-gray-500 mb-2">
+                        <label htmlFor="role" className="block text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">
                           Your Role / Title (Optional)
                         </label>
                         <input type="text" id="role" name="role" value={formData.role} onChange={handleChange} placeholder="CTO" className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:border-[#ffb347]/60 focus:bg-[#ffb347]/[0.03] transition-all duration-300 text-white placeholder-gray-600 text-sm"/>
@@ -155,7 +155,7 @@ export default function ReviewPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-xs font-semibold tracking-widest uppercase text-gray-500 mb-2">
+                      <label htmlFor="message" className="block text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">
                         Your Review *
                       </label>
                       <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={6} placeholder="VinusXTech completely transformed our infrastructure..." className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl focus:outline-none focus:border-[#ffb347]/60 focus:bg-[#ffb347]/[0.03] transition-all duration-300 text-white placeholder-gray-600 resize-none text-sm"/>
@@ -164,7 +164,7 @@ export default function ReviewPage() {
                     {/* Submit */}
                     <motion.div whileHover={!loading ? { scale: 1.05 } : {}} whileTap={!loading ? { scale: 0.95 } : {}} className="w-full group">
                       <BorderGlow borderRadius={9999} backgroundColor="rgba(255, 179, 71, 0.05)" edgeSensitivity={30} glowRadius={15} glowIntensity={2} className="w-full border border-[#ffb347]/30 transition-all duration-300 group-hover:bg-[#ffb347]/10" glowColor="35 100 50" colors={['#ffb347', '#ff00ff', '#ffb347']}>
-                        <button type="submit" disabled={loading} className={`w-full px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-3 transition-all duration-300 ${loading ? 'text-gray-500 cursor-not-allowed' : 'text-white'}`}>
+                        <button type="submit" disabled={loading} className={`w-full px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-3 transition-all duration-300 ${loading ? 'text-gray-400 cursor-not-allowed' : 'text-white'}`}>
                           {loading ? (<>
                               <Loader2 className="w-5 h-5 animate-spin"/>
                               <span>Submitting...</span>

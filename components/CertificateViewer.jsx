@@ -84,7 +84,7 @@ export default function CertificateViewer({ isOpen, onClose }) {
                 </div>
                 <div>
                   <h3 className="text-white text-sm font-bold tracking-tight">Udyam Registration Certificate</h3>
-                  <p className="text-gray-500 text-[10px] font-mono uppercase tracking-widest">Protected Document • View Only</p>
+                  <p className="text-gray-400 text-[10px] font-mono uppercase tracking-widest">Protected Document • View Only</p>
                 </div>
               </div>
               <button
@@ -109,7 +109,7 @@ export default function CertificateViewer({ isOpen, onClose }) {
                 <div className="hidden sm:flex absolute inset-0 items-center justify-center bg-[#0a0a12] z-30">
                   <div className="flex flex-col items-center gap-4">
                     <div className="w-10 h-10 border-2 border-[#00d4ff]/30 border-t-[#00d4ff] rounded-full animate-spin" />
-                    <p className="text-gray-500 text-xs font-mono">Loading document...</p>
+                    <p className="text-gray-400 text-xs font-mono">Loading document...</p>
                   </div>
                 </div>
               )}
