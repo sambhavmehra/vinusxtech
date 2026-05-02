@@ -333,13 +333,13 @@ export default function HomePage() {
             <div className="text-left flex flex-col items-start relative z-10">
               {/* Title */}
               <motion.div
-                initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="relative"
               >
                 {/* Massive ambient glow behind the text - Static color prevents lag */}
-                <h1 className="absolute inset-0 blur-[60px] opacity-20 text-white text-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-[-0.02em] leading-[1.1] pointer-events-none translate-y-2">
+                <h1 className="absolute inset-0 blur-[60px] opacity-20 text-white text-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-[-0.02em] leading-[1.1] pointer-events-none translate-y-2 hidden md:block">
                   We Don&apos;t Build Software.<br />We Build Intelligent Power.
                 </h1>
 

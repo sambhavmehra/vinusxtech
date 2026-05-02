@@ -77,8 +77,8 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="VinUSXtech Logo"
-              width={550}
-              height={320}
+              width={112}
+              height={65}
               className={`object-contain relative z-10 drop-shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled ? 'h-[36px] lg:h-[42px] w-auto' : 'h-[65px] lg:h-[80px] w-auto'
                 }`}
               priority

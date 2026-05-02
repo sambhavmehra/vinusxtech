@@ -6,10 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Chatbot from '@/components/Chatbot';
-import BackgroundAnimation from '@/components/animations/BackgroundAnimation';
-import CustomCursor from '@/components/CustomCursor';
-import LeadPopup from '@/components/LeadPopup';
+import dynamic from 'next/dynamic';
+
+const Chatbot = dynamic(() => import('@/components/Chatbot'), { ssr: false });
+const BackgroundAnimation = dynamic(() => import('@/components/animations/BackgroundAnimation'), { ssr: false });
+const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: false });
+const LeadPopup = dynamic(() => import('@/components/LeadPopup'), { ssr: false });
 import { ToastContainer } from 'react-toastify';
 
 /* ================= FONT ================= */
@@ -195,13 +197,13 @@ export default function RootLayout({ children }) {
 
         {/* Google Analytics */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-0T6CQ1X3YX"
         />
 
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

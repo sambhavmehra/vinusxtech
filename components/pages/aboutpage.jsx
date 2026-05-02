@@ -197,10 +197,8 @@ Our goal is simple: help businesses grow with technology that is smart, reliable
       </section>
 
       {/* WHY CHOOSE US - 2 COLUMN LAYOUT */}
-      <section className="py-24 px-4 relative mb-24 overflow-hidden">
-        {/* Ambient Background Glows */}
-        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#00d4ff]/5 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#a855f7]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <section className="pt-24 pb-8 px-4 relative overflow-hidden">
+        {/* Ambient Background Glows Removed for Performance */}
 
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">

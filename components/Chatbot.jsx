@@ -257,7 +257,7 @@ export default function Chatbot() {
         return null;
     return (<>
       <AnimatePresence>
-        {isOpen && (<motion.div initial={{ opacity: 0, y: 20, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.9 }} className="fixed bottom-24 right-6 w-[calc(100vw-3rem)] sm:w-[400px] h-[70vh] sm:h-[650px] shadow-2xl flex flex-col overflow-hidden z-50 origin-bottom-right" style={{
+        {isOpen && (<motion.div initial={{ opacity: 0, y: 20, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.9 }} className="fixed bottom-28 md:bottom-28 right-4 md:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[75vh] sm:h-[650px] shadow-2xl flex flex-col overflow-hidden z-50 origin-bottom-right" style={{
                 background: 'rgba(5, 5, 10, 0.85)',
                 backdropFilter: 'blur(30px)',
                 borderRadius: '28px',
@@ -265,7 +265,7 @@ export default function Chatbot() {
                 boxShadow: '0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(0,255,136,0.1) inset'
             }}>
             {/* Header */}
-            <div className="flex items-center justify-between p-5 border-b border-white/5 bg-gradient-to-r from-[#00ff88]/10 via-[#00d4ff]/5 to-transparent relative overflow-hidden">
+            <div className="shrink-0 flex items-center justify-between p-5 border-b border-white/5 bg-gradient-to-r from-[#00ff88]/10 via-[#00d4ff]/5 to-transparent relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#00d4ff] opacity-[0.15] blur-[50px] pointer-events-none"/>
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#00ff88] opacity-[0.15] blur-[50px] pointer-events-none"/>
 
@@ -273,7 +273,7 @@ export default function Chatbot() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-[#00ff88] rounded-full blur-[10px] opacity-40 animate-pulse"/>
                   <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-[#00ff88]/20 to-[#00d4ff]/20 border border-[#00ff88]/30 flex items-center justify-center p-2">
-                    <img src="/logo.png" alt="VinusXTech AI solutions Logo" className="w-full h-full object-contain"/>
+                    <img src="/logo.png" alt="VinusXTech AI solutions Logo" width="48" height="48" className="w-full h-full object-contain"/>
                   </div>
                   <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-[#00ff88] rounded-full border-2 border-[#05050a]"/>
                 </div>
@@ -402,7 +402,7 @@ export default function Chatbot() {
             </AnimatePresence>
 
             {/* Input Form */}
-            <div className="p-4 border-t border-white/[0.08] bg-black/60 backdrop-blur-md flex flex-col gap-3">
+            <div className="shrink-0 p-4 border-t border-white/[0.08] bg-black/60 backdrop-blur-md flex flex-col gap-3">
 
               <form onSubmit={handleSubmit} className="relative flex items-center">
                 <input value={input} onChange={(e) => setInput(e.target.value)} placeholder={showLeadForm ? 'Submit your details to continue...' : 'Type a message...'} disabled={showLeadForm} className="w-full bg-white/[0.03] border border-white/10 rounded-full pl-5 pr-14 py-3.5 focus:outline-none focus:border-[#00ff88]/50 focus:bg-white/[0.06] transition-all text-white text-[13px] shadow-inner font-light disabled:opacity-30 disabled:cursor-not-allowed"/>
@@ -417,42 +417,44 @@ export default function Chatbot() {
           </motion.div>)}
       </AnimatePresence>
 
-      <div className="fixed bottom-6 right-6 z-50 flex items-center">
-        <AnimatePresence>
-          {showTooltip && (<motion.div initial={{ opacity: 0, x: 20, scale: 0.9 }} animate={{
-                opacity: 1,
-                x: 0,
-                scale: 1,
-                y: [0, -5, 0] // Gentle floating animation
-            }} exit={{ opacity: 0, x: 10, scale: 0.9 }} transition={{
-                y: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }
-            }} className="mr-4 px-4 py-2.5 bg-white text-black text-[13px] font-bold rounded-2xl rounded-tr-none shadow-[0_0_20px_rgba(0,255,136,0.3)] whitespace-nowrap cursor-pointer relative" onClick={() => setIsOpen(true)}>
-              {tooltipText}
-              {/* Tooltip triangle pointer */}
-              <div className="absolute right-[-6px] top-2 border-[6px] border-transparent border-l-white"/>
-            </motion.div>)}
-        </AnimatePresence>
+      {!isOpen && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center">
+          <AnimatePresence>
+            {showTooltip && (<motion.div initial={{ opacity: 0, x: 20, scale: 0.9 }} animate={{
+                  opacity: 1,
+                  x: 0,
+                  scale: 1,
+                  y: [0, -5, 0] // Gentle floating animation
+              }} exit={{ opacity: 0, x: 10, scale: 0.9 }} transition={{
+                  y: {
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                  }
+              }} className="mr-4 px-4 py-2.5 bg-white text-black text-[13px] font-bold rounded-2xl rounded-tr-none shadow-[0_0_20px_rgba(0,255,136,0.3)] whitespace-nowrap cursor-pointer relative" onClick={() => setIsOpen(true)}>
+                {tooltipText}
+                {/* Tooltip triangle pointer */}
+                <div className="absolute right-[-6px] top-2 border-[6px] border-transparent border-l-white"/>
+              </motion.div>)}
+          </AnimatePresence>
 
-        <motion.button onClick={() => setIsOpen(!isOpen)} animate={{ y: [0, -6, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} whileHover={{ scale: 1.05, y: 0 }} whileTap={{ scale: 0.95 }} className="relative w-16 h-16 bg-gradient-to-br from-[#00ff88] to-[#00d4ff] rounded-full flex items-center justify-center text-black shadow-[0_0_30px_rgba(0,255,136,0.4)] hover:shadow-[0_0_40px_rgba(0,255,136,0.6)] transition-all">
-          {/* Subtle pulse behind the button */}
-          <div className="absolute inset-0 rounded-full border border-[#00ff88] animate-ping opacity-50" style={{ animationDuration: '3s' }}/>
-          {isOpen ? (<X className="w-7 h-7"/>) : (<motion.div animate={{
-                y: [0, -8, 2, -2, 0],
-                scale: [1, 1.1, 0.9, 1.05, 1],
-                rotate: [0, -10, 10, -5, 0]
-            }} transition={{
-                duration: 1,
-                repeat: Infinity,
-                repeatDelay: 4,
-                ease: "easeInOut"
-            }}>
-              <Bot className="w-7 h-7"/>
-            </motion.div>)}
-        </motion.button>
-      </div>
+          <motion.button onClick={() => setIsOpen(!isOpen)} animate={{ y: [0, -6, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} whileHover={{ scale: 1.05, y: 0 }} whileTap={{ scale: 0.95 }} className="relative w-16 h-16 bg-gradient-to-br from-[#00ff88] to-[#00d4ff] rounded-full flex items-center justify-center text-black shadow-[0_0_30px_rgba(0,255,136,0.4)] hover:shadow-[0_0_40px_rgba(0,255,136,0.6)] transition-all">
+            {/* Subtle pulse behind the button */}
+            <div className="absolute inset-0 rounded-full border border-[#00ff88] animate-ping opacity-50" style={{ animationDuration: '3s' }}/>
+            <motion.div animate={{
+                  y: [0, -8, 2, -2, 0],
+                  scale: [1, 1.1, 0.9, 1.05, 1],
+                  rotate: [0, -10, 10, -5, 0]
+              }} transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  repeatDelay: 4,
+                  ease: "easeInOut"
+              }}>
+                <Bot className="w-7 h-7"/>
+              </motion.div>
+          </motion.button>
+        </div>
+      )}
     </>);
 }

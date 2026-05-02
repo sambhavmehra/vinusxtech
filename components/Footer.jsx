@@ -36,10 +36,8 @@ export default function Footer() {
   if (pathname === '/s-admin')
     return null;
   return (<footer className="relative bg-[#050508] border-t border-white/[0.05] overflow-hidden mt-10">
-    {/* Absolute ambient glows specific to footer - matching global cyan/purple theme */}
+    {/* Absolute ambient glows specific to footer removed for performance */}
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-      <div className="absolute top-[-50%] left-[-10%] w-[40%] h-[100%] rounded-full bg-[#a855f7]/5 blur-[120px]" />
-      <div className="absolute bottom-[-50%] right-[-10%] w-[40%] h-[100%] rounded-full bg-[#00d4ff]/5 blur-[120px]" />
     </div>
 
     {/* Top glowing line */}
