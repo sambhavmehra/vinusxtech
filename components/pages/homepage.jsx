@@ -518,7 +518,7 @@ export default function HomePage() {
                   </span>
                 </h3>
                 <p className="text-lg text-gray-400 leading-relaxed font-light mb-8 max-w-lg">
-                At VinusXTech, we create intelligent digital experiences that keep businesses ahead of the curve. From fast, secure websites and custom mobile apps to powerful AI solutions, our goal is to simplify technology and deliver real results. We handle the code, security, and performance so you can focus on what you do best—growing your business.
+                  At VinusXTech, we create intelligent digital experiences that keep businesses ahead of the curve. From fast, secure websites and custom mobile apps to powerful AI solutions, our goal is to simplify technology and deliver real results. We handle the code, security, and performance so you can focus on what you do best—growing your business.
                 </p>
                 <Link href="/about" className="inline-flex items-center gap-3 text-white font-medium text-sm hover:text-[#00d4ff] transition-colors group">
                   <span>About VinusXTech — AI & Cybersecurity Experts</span>
